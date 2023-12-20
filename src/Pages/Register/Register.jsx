@@ -1,6 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/UseAuth";
 
 const Register = () => {
+    const{createUser} =useAuth()
+    const navigate = useNavigate()
+    const handleRegister = e =>{
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const photo = form.photo.value;
+        const password =form.password.value;
+        console.log(name, email, photo, password);
+        
+        createUser(email, password)
+        .then(result=>{
+            console.log(result);
+        })
+        navigate("/");
+    }
     return (
         <div>
             <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 bg-gray-900 text-gray-100 text-center mx-auto">
@@ -8,7 +26,7 @@ const Register = () => {
                 <p className="text-sm text-center text-gray-400">Have an account?
                     <Link className="focus:underline hover:underline" to='/login'> Sign in here </Link>
                 </p>
-                <form novalidate="" action="" className="space-y-8">
+                <form onSubmit={handleRegister} className="space-y-8">
                     <div className="space-y-4 pt-3">
                         <div className="space-y-2">
                             <label  className="block  text-left text-sm">Full Name</label>
@@ -24,12 +42,12 @@ const Register = () => {
                         </div>
                         <div className="space-y-2">
                             <div className="flex justify-between">
-                                <label for="password" className="text-sm">Password</label>
+                                <label className="text-sm">Password</label>
                             </div>
-                            <input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" required />
+                            <input type="password" name="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" required />
                         </div>
                     </div>
-                    <button type="button" className="w-full px-8 py-3 font-semibold rounded-md bg-violet-400 text-gray-900">Sign up</button>
+                    <button className="w-full px-8 py-3 font-semibold rounded-md bg-violet-400 text-gray-900">Sign up</button>
                 </form>
                 <div className="flex items-center w-full my-4">
                     <hr className="w-full text-gray-400" />

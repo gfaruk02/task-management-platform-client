@@ -3,15 +3,15 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
     const navMenus = <>
-           <li className="list-none ml-5 text-lg rounded text-rose-600 font-semibold">
+           <li className="list-none ml-5 text-lg rounded text-gray-950 font-bold">
       <NavLink
         to="/"
         style={({ isActive, isTransitioning }) => {
           return {
             fontWeight: isActive ? "bold" : " ",
-            padding: isActive ? "4px" : " ",
+            // padding: isActive ? "6px" : "8px ",
             rounded: isActive ? "lg" : " ",
-            color: isActive ? "#5557B6" : "",
+            color: isActive ? "#ffffff" : "",
             // backgroundColor: isActive ? "#F9A6E4" : "",
             borderBottom: isActive ? "3px solid #0F13D1" : "",
             viewTransitionName: isTransitioning ? "slide" : "",
@@ -21,15 +21,15 @@ const Navbar = () => {
         Home
       </NavLink>
     </li>
-    <li className="list-none ml-5 text-lg rounded text-rose-600 font-semibold">
+    <li className="list-none ml-5 text-lg rounded text-gray-950 font-bold">
       <NavLink
         to="/register"
         style={({ isActive, isTransitioning }) => {
           return {
             fontWeight: isActive ? "bold" : " ",
-            padding: isActive ? "4px" : " ",
+            // padding: isActive ? "4px" : " ",
             rounded: isActive ? "lg" : " ",
-            color: isActive ? "#5557B6" : "",
+            color: isActive ? "#ffffff" : "",
             // backgroundColor: isActive ? "#F9A6E4" : "",
             borderBottom: isActive ? "3px solid #0F13D1" : "",
             viewTransitionName: isTransitioning ? "slide" : "",
@@ -39,15 +39,15 @@ const Navbar = () => {
         Register
       </NavLink>
     </li>
-    <li className="list-none ml-5 text-lg rounded text-rose-600 font-semibold">
+    <li className="list-none ml-5 text-lg rounded text-gray-950 font-bold">
       <NavLink
         to="/login"
         style={({ isActive, isTransitioning }) => {
           return {
             fontWeight: isActive ? "bold" : " ",
-            padding: isActive ? "4px" : " ",
+            // padding: isActive ? "4px" : " ",
             rounded: isActive ? "lg" : " ",
-            color: isActive ? "#5557B6" : "",
+            color: isActive ? "#ffffff" : "",
             // backgroundColor: isActive ? "#F9A6E4" : "",
             borderBottom: isActive ? "3px solid #0F13D1" : "",
             viewTransitionName: isTransitioning ? "slide" : "",
@@ -61,7 +61,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-base-200">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -71,7 +71,7 @@ const Navbar = () => {
                             {navMenus}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">Task Management</a>
+                    <a className="btn btn-ghost font-bold text-2xl">Task Management</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

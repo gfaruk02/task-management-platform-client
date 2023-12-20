@@ -1,7 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/UseAuth";
 
 
 const Login = () => {
+    const{signIn} =useAuth()
+    const navigate = useNavigate()
+    const handleLogin = e =>{
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password =form.password.value;
+        console.log(email, password);
+
+        signIn(email, password)
+        .then(result=>{
+            const user=result.user;
+            console.log(user);
+        })
+        navigate("/");
+    }
+
     return (
         <div>
             <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 bg-gray-900 text-gray-100 text-center mx-auto">
@@ -9,21 +27,21 @@ const Login = () => {
                 <p className="text-sm text-center text-gray-400">Dont have account?
                     <Link className="focus:underline hover:underline" to='/register'> Sign up here </Link>
                 </p>
-                <form novalidate="" action="" className="space-y-8">
+                <form onSubmit={handleLogin} className="space-y-6">
                     <div className="space-y-4 pt-3">
                         <div className="space-y-2">
-                            <label for="email" className="block  text-left text-sm">Email address</label>
-                            <input type="email" name="email" id="email" placeholder="leroy@jenkins.com" className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" required />
+                            <label className="block  text-left text-sm">Email address</label>
+                            <input type="email" name="email" placeholder="leroy@jenkins.com" className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" required />
                         </div>
                         <div className="space-y-2">
                             <div className="flex justify-between">
-                                <label for="password" className="text-sm">Password</label>
+                                <label className="text-sm">Password</label>
                                 <a rel="noopener noreferrer" href="#" className="text-xs hover:underline text-gray-400">Forgot password?</a>
                             </div>
-                            <input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" required />
+                            <input type="password" name="password" placeholder="Password" className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" required />
                         </div>
                     </div>
-                    <button type="button" className="w-full px-8 py-3 font-semibold rounded-md bg-violet-400 text-gray-900">Sign in</button>
+                    <button className="w-full px-8 py-3 font-semibold rounded-md bg-violet-400 text-gray-900">Sign in</button>
                 </form>
                 <div className="flex items-center w-full my-4">
                     <hr className="w-full text-gray-400" />
