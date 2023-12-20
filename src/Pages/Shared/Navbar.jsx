@@ -1,9 +1,62 @@
+import { NavLink } from "react-router-dom";
 
 
 const Navbar = () => {
     const navMenus = <>
-        <li><a>Submenu 1</a></li>
-        <li><a>Submenu 2</a></li>
+           <li className="list-none ml-5 text-lg rounded text-rose-600 font-semibold">
+      <NavLink
+        to="/"
+        style={({ isActive, isTransitioning }) => {
+          return {
+            fontWeight: isActive ? "bold" : " ",
+            padding: isActive ? "4px" : " ",
+            rounded: isActive ? "lg" : " ",
+            color: isActive ? "#5557B6" : "",
+            // backgroundColor: isActive ? "#F9A6E4" : "",
+            borderBottom: isActive ? "3px solid #0F13D1" : "",
+            viewTransitionName: isTransitioning ? "slide" : "",
+          };
+        }}
+      >
+        Home
+      </NavLink>
+    </li>
+    <li className="list-none ml-5 text-lg rounded text-rose-600 font-semibold">
+      <NavLink
+        to="/register"
+        style={({ isActive, isTransitioning }) => {
+          return {
+            fontWeight: isActive ? "bold" : " ",
+            padding: isActive ? "4px" : " ",
+            rounded: isActive ? "lg" : " ",
+            color: isActive ? "#5557B6" : "",
+            // backgroundColor: isActive ? "#F9A6E4" : "",
+            borderBottom: isActive ? "3px solid #0F13D1" : "",
+            viewTransitionName: isTransitioning ? "slide" : "",
+          };
+        }}
+      >
+        Register
+      </NavLink>
+    </li>
+    <li className="list-none ml-5 text-lg rounded text-rose-600 font-semibold">
+      <NavLink
+        to="/login"
+        style={({ isActive, isTransitioning }) => {
+          return {
+            fontWeight: isActive ? "bold" : " ",
+            padding: isActive ? "4px" : " ",
+            rounded: isActive ? "lg" : " ",
+            color: isActive ? "#5557B6" : "",
+            // backgroundColor: isActive ? "#F9A6E4" : "",
+            borderBottom: isActive ? "3px solid #0F13D1" : "",
+            viewTransitionName: isTransitioning ? "slide" : "",
+          };
+        }}
+      >
+        Login
+      </NavLink>
+    </li>
     </>
 
     return (
