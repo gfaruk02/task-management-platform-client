@@ -1,7 +1,14 @@
 import { NavLink } from "react-router-dom";
+import useAuth from "../../Hooks/UseAuth";
 
 
 const Navbar = () => {
+  const {user, logOut} = useAuth()
+  const handlesignOut = () => {
+    logOut()
+      .then(() => console.log('User LogOut Success'))
+      .catch(error => console.error(error))
+  }
     const navMenus = <>
            <li className="list-none ml-5 text-lg rounded text-gray-950 font-bold">
       <NavLink
@@ -57,24 +64,27 @@ const Navbar = () => {
         Login
       </NavLink>
     </li>
-    <li className="list-none ml-5 text-lg rounded text-gray-950 font-bold">
-      <NavLink
-        to="/dashboard"
-        style={({ isActive, isTransitioning }) => {
-          return {
-            fontWeight: isActive ? "bold" : " ",
-            // padding: isActive ? "4px" : " ",
-            rounded: isActive ? "lg" : " ",
-            color: isActive ? "#ffffff" : "",
-            // backgroundColor: isActive ? "#F9A6E4" : "",
-            borderBottom: isActive ? "3px solid #0F13D1" : "",
-            viewTransitionName: isTransitioning ? "slide" : "",
-          };
-        }}
-      >
-        Dashboard
-      </NavLink>
-    </li>
+{
+  user &&     
+  <li className="list-none ml-5 text-lg rounded text-gray-950 font-bold">
+  <NavLink
+    to="/dashboard"
+    style={({ isActive, isTransitioning }) => {
+      return {
+        fontWeight: isActive ? "bold" : " ",
+        // padding: isActive ? "4px" : " ",
+        rounded: isActive ? "lg" : " ",
+        color: isActive ? "#ffffff" : "",
+        // backgroundColor: isActive ? "#F9A6E4" : "",
+        borderBottom: isActive ? "3px solid #0F13D1" : "",
+        viewTransitionName: isTransitioning ? "slide" : "",
+      };
+    }}
+  >
+    Dashboard
+  </NavLink>
+</li>
+}
     </>
 
     return (
@@ -96,9 +106,11 @@ const Navbar = () => {
                         {navMenus}
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <a className="btn">Logout</a>
-                </div>
+                {
+                  user && <div className="navbar-end">
+                  <a onClick={handlesignOut} className="btn">Logout</a>
+              </div>
+                }
             </div>
         </div>
     );
