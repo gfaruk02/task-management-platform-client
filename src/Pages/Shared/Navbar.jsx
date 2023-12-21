@@ -57,6 +57,24 @@ const Navbar = () => {
         Login
       </NavLink>
     </li>
+    <li className="list-none ml-5 text-lg rounded text-gray-950 font-bold">
+      <NavLink
+        to="/dashboard"
+        style={({ isActive, isTransitioning }) => {
+          return {
+            fontWeight: isActive ? "bold" : " ",
+            // padding: isActive ? "4px" : " ",
+            rounded: isActive ? "lg" : " ",
+            color: isActive ? "#ffffff" : "",
+            // backgroundColor: isActive ? "#F9A6E4" : "",
+            borderBottom: isActive ? "3px solid #0F13D1" : "",
+            viewTransitionName: isTransitioning ? "slide" : "",
+          };
+        }}
+      >
+        Dashboard
+      </NavLink>
+    </li>
     </>
 
     return (
