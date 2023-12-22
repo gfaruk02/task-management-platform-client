@@ -37,7 +37,7 @@ export const router = createBrowserRouter([
           {
             path: 'userdashboard',
             element: <UserDashboard></UserDashboard>,
-            loader: () => fetch('http://localhost:5000/createTask')
+            loader: () => fetch('https://task-management-platform-server-fawn.vercel.app/createTask')
           },
             {
               path: 'createtask',
