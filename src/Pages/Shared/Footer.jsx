@@ -3,12 +3,16 @@
 const Footer = () => {
     return (
         <div>
-            <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
+            <footer className="footer footer-center p-10 bg-base-300 text-base-content rounded">
                 <nav className="grid grid-flow-col gap-4">
-                    <a className="link link-hover">Home</a>
+                    <Link to="/">Home </Link>
+                    <Link to="/dashboard">Dashboard </Link>
+                    <Link to="/register">Register </Link>
+                    <Link to="/login">Login </Link>
+                    {/* <a className="link link-hover"></a>
                     <a className="link link-hover">Dashboard</a>
                     <a className="link link-hover">Register</a>
-                    <a className="link link-hover">Login</a>
+                    <a className="link link-hover">Login</a> */}
                 </nav>
                 <nav>
                     <div className="grid grid-flow-col gap-4">
