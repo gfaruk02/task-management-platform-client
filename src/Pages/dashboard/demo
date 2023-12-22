@@ -1,0 +1,271 @@
+// import React from 'react';
+// import { useLoaderData } from 'react-router-dom';
+// import { DndProvider, useDrag } from 'react-dnd'
+// import { HTML5Backend } from 'react-dnd-html5-backend'
+
+// const UserDashboard = () => {
+//     const tasks = useLoaderData()
+//     const [{ isDragging }, drag] = useDrag(() => ({
+//         type: "task",
+//         collect: (monitor) => ({
+//           isDragging: !!monitor.isDragging()
+//         })
+//       }))
+//       console.log(isDragging);
+//     return (
+//         <DndProvider backend={HTML5Backend}>
+//             <div className='md:m-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-between items-center'>
+//                 <div className='bg-slate-400 '>
+{/* <div className='bg-gray-700 py-5 pl-3 rounded-lg border-2 border-black'> */}
+//                         <h1 className='text-gray-50 text-2xl'> Task</h1>
+//                     </div>
+//                     {
+//                         tasks?.map(task=> <div ref={drag} key={task._id} className="mb-2 p-3 bg-gray-900 text-gray-100">
+//                         <h4 className="font-bold text-xl py-3">{task.title}</h4>
+                        
+//                             <div className="flex justify-between text-gray-50 gap-5 items-center">
+//                                     <span className="text-md ">Deadline: {task.deadlines} </span>
+//                                     <span className="text-md ">Priority: {task.priority}</span>
+//                             </div>
+//                         <div className="p-4 space-y-2 text-sm text-gray-400">
+//                             <p>{task.descriptions}</p>
+//                         </div>
+//                         <div className="p-4 space-x-3 text-sm text-gray-400">
+//                             <span>View</span>
+//                             <span>Edit</span>
+//                             <span>Delete</span>
+//                         </div>
+//                     </div>)
+//                     }
+
+//                 </div>
+//                 <div className='bg-slate-400'>
+//                     <div className='bg-gray-700 py-5 pl-3 rounded-lg border-2 border-black'>
+//                         <h1 className='text-gray-50 text-2xl'> Ongoing</h1>
+//                     </div>
+//                     <p>this</p>
+//                 </div>
+//                 <div className='bg-slate-400'>
+//                     <div className='bg-gray-700 py-5 pl-3 rounded-lg border-2 border-black'>
+//                         <h1 className='text-gray-50 text-2xl'>Completed</h1>
+//                     </div>
+//                     <p>this</p>
+//                 </div>
+//             </div>
+//         </DndProvider>
+//     );
+// };
+// const DraggableTask = ({ task }) => {
+//     const [{ isDragging }, drag] = useDrag(() => ({
+//         type: "task",
+//         item: { id: task._id, type: "task" },
+//         collect: (monitor) => ({
+//             isDragging: !!monitor.isDragging()
+//         })
+//     }));
+
+//     return (
+//         <div ref={drag} className="mb-2 p-3 bg-gray-900 text-gray-100" style={{ opacity: isDragging ? 0.5 : 1 }}>
+//             {/* Render task content */}
+//         </div>
+//     );
+// };
+// export default UserDashboard;
+
+
+// import React from 'react';
+// import { useLoaderData } from 'react-router-dom';
+// import { DndProvider, useDrag } from 'react-dnd';
+// import { HTML5Backend } from 'react-dnd-html5-backend';
+
+// const UserDashboard = () => {
+//     const tasks = useLoaderData();
+
+//     return (
+//         <DndProvider backend={HTML5Backend}>
+//             <div className='md:m-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-between items-center'>
+//                 <div className='bg-slate-400'>
+//                     <div className='bg-gray-700 py-5 pl-3 rounded-lg border-2 border-black'>
+//                         <h1 className='text-gray-50 text-2xl'> Task</h1>
+//                     </div>
+//                     {tasks?.map(task => <DraggableTask key={task._id} task={task} />)}
+//                 </div>
+//  <div className='bg-slate-400'>
+// <div className='bg-gray-700 py-5 pl-3 rounded-lg border-2 border-black'>
+//     <h1 className='text-gray-50 text-2xl'> Ongoing</h1>
+// </div>
+// <p>this</p>
+//  </div>
+//  <div className='bg-slate-400'>
+// <div className='bg-gray-700 py-5 pl-3 rounded-lg border-2 border-black'>
+//     <h1 className='text-gray-50 text-2xl'>Completed</h1>
+// </div>
+// <p>this</p>
+//  </div>
+//             </div>
+//         </DndProvider>
+//     );
+// };
+
+// const DraggableTask = ({ task }) => {
+
+
+//     return (
+
+//     );
+// };
+
+// export default UserDashboard;
+
+// import React from 'react';
+// import { useLoaderData } from 'react-router-dom';
+// import { DndProvider, useDrag, useDrop } from 'react-dnd';
+// import { HTML5Backend } from 'react-dnd-html5-backend';
+
+// const UserDashboard = () => {
+//     const tasks = useLoaderData();
+
+//     return (
+//         <DndProvider backend={HTML5Backend}>
+//             <div className='md:m-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-between items-center'>
+//                 <TaskSection title="Task" tasks={tasks} />
+//                 <TaskSection title="Ongoing" tasks={[]} />
+//                 <TaskSection title="Completed" tasks={[]} />
+//             </div>
+//         </DndProvider>
+//     );
+// };
+
+// const TaskSection = ({ title, tasks }) => {
+//     const [{ isDragging }, drag] = useDrag(() => ({
+//         type: "task",
+//         collect: (monitor) => ({
+//             isDragging: !!monitor.isDragging()
+//         })
+//     }));
+
+//     const [, drop] = useDrop(() => ({
+//         accept: "task",
+//         drop: () => ({ name: title }),
+//     }));
+
+//     return (
+//         <div ref={drop} className='bg-slate-400'>
+//             <div className='bg-gray-700 py-5 pl-3 rounded-lg border-2 border-black'>
+//                 <h1 className='text-gray-50 text-2xl'>{title}</h1>
+//             </div>
+//             {tasks?.map(task => <DraggableTask key={task._id} task={task} drag={drag} />)}
+//         </div>
+//     );
+// };
+
+// const DraggableTask = ({ task, dragTask }) => {
+//     const [{ isDragging }, drag] = useDrag(() => ({
+//         type: "task",
+//         item: { id: task._id, type: "task" },
+//         collect: (monitor) => ({
+//             isDragging: !!monitor.isDragging()
+//         })
+//     }));
+//     return (
+//         <div ref={drag} className="mb-2 p-3 bg-gray-900 text-gray-100" style={{ opacity: isDragging ? 0.5 : 1 }}>
+//             <h4 className="font-bold text-xl py-3">{task.title}</h4>
+//             <div className="flex justify-between text-gray-50 gap-5 items-center">
+//                 <span className="text-md ">Deadline: {task.deadlines} </span>
+//                 <span className="text-md ">Priority: {task.priority}</span>
+//             </div>
+//             <div className="p-4 space-y-2 text-sm text-gray-400">
+//                 <p>{task.descriptions}</p>
+//             </div>
+//             <div className="p-4 space-x-3 text-sm text-gray-400">
+//                 <span>View</span>
+//                 <span>Edit</span>
+//                 <span>Delete</span>
+//             </div>
+//         </div>
+//     );
+// };
+
+
+// export default UserDashboard;
+
+import React, { useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
+import { DndProvider, useDrag, useDrop } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+
+const UserDashboard = () => {
+    const initialTasks = useLoaderData() || [];
+    const [tasks, setTasks] = useState(initialTasks);
+    const [ongoingTasks, setOngoingTasks] = useState([]);
+    const [completedTasks, setCompletedTasks] = useState([]);
+
+    const moveTask = (taskId, source, destination) => {
+        const task = tasks.find(task => task._id === taskId);
+        if (task) {
+            const updatedTasks = tasks.filter(task => task._id !== taskId);
+            if (destination === "ongoing") {
+                setTasks(updatedTasks);
+                setOngoingTasks([...ongoingTasks, task]);
+            } else if (destination === "completed") {
+                const updatedOngoingTasks = ongoingTasks.filter(task => task._id !== taskId);
+                setOngoingTasks(updatedOngoingTasks);
+                setCompletedTasks([...completedTasks, task]);
+            }
+        }
+    };
+
+    return (
+        <DndProvider backend={HTML5Backend}>
+            <div className='md:m-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-between items-center'>
+                <TaskSection title="Task" tasks={tasks} moveTask={moveTask} />
+                <TaskSection title="Ongoing" tasks={ongoingTasks} moveTask={moveTask} />
+                <TaskSection title="Completed" tasks={completedTasks} moveTask={moveTask} />
+            </div>
+        </DndProvider>
+    );
+};
+
+const DraggableTask = ({ task, moveTask, section }) => {
+    const [{ isDragging }, drag] = useDrag(() => ({
+        type: "task",
+        item: { id: task._id, section },
+        collect: (monitor) => ({
+            isDragging: !!monitor.isDragging()
+        })
+    }));
+
+    return (
+        <div ref={drag} className="mb-2 p-3 bg-gray-900 text-gray-100" style={{ opacity: isDragging ? 0.5 : 1 }}>
+            <h4 className="font-bold text-xl py-3">{task.title}</h4>
+            {/* Other task details */}
+        </div>
+    );
+};
+
+const TaskSection = ({ title, tasks, moveTask }) => {
+    const [, drop] = useDrop(() => ({
+        accept: "task",
+        drop: (item) => {
+            moveTask(item.id, item.section, title.toLowerCase());
+        },
+    }));
+
+    return (
+        <div ref={drop} className='bg-slate-400'>
+            <div className='bg-gray-700 py-5 pl-3 rounded-lg border-2 border-black'>
+                <h1 className='text-gray-50 text-2xl'>{title}</h1>
+            </div>
+            {tasks?.map(task => (
+                <DraggableTask
+                    key={task._id}
+                    task={task}
+                    moveTask={moveTask}
+                    section={title.toLowerCase()}
+                />
+            ))}
+        </div>
+    );
+};
+
+export default UserDashboard;

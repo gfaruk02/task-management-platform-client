@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import useAuth from "../../Hooks/UseAuth";
+import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 

@@ -1,12 +1,16 @@
-import { NavLink } from "react-router-dom";
-import useAuth from "../../Hooks/UseAuth";
+import { NavLink, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 
 const Navbar = () => {
   const {user, logOut} = useAuth()
+  const navigate = useNavigate()
   const handlesignOut = () => {
     logOut()
-      .then(() => console.log('User LogOut Success'))
+      .then(() => {
+        console.log('User LogOut Success');
+      })
+      navigate("/")
       .catch(error => console.error(error))
   }
     const navMenus = <>
