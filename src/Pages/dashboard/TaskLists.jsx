@@ -49,7 +49,7 @@ const TaskLists = ({task}) => {
         const descriptions = form.descriptions.value;
         const taskItem = { _id, title, deadlines, priority, descriptions};
         console.log(taskItem);
-        fetch(`https://task-management-platform-server-fawn.vercel.app/createTask/${_id}`, {
+        fetch(`http://localhost:5000/createTask/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"

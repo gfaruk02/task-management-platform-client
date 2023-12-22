@@ -14,7 +14,7 @@ const CreateTask = () => {
         const createTask = { title, descriptions, deadlines, priority };
         console.log(createTask);
 
-        axiosPublic.post('https://task-management-platform-server-fawn.vercel.app/createTask',createTask)
+        axiosPublic.post('http://localhost:5000/createTask',createTask)
         .then(res => {
             if (res.data.insertedId) {
                 console.log('Create task');
