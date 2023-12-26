@@ -5,10 +5,10 @@ const Footer = () => {
         <div>
             <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
                 <nav className="grid grid-flow-col gap-4">
-                    <a className="link link-hover">Home</a>
-                    <a className="link link-hover">Dashboard</a>
-                    <a className="link link-hover">Register</a>
-                    <a className="link link-hover">Login</a>
+                    <a className="link link-hover hover:bg-sky-400 py-2 px-1 rounded-lg">Home</a>
+                    <a className="link link-hover hover:bg-sky-400 py-2 px-1 rounded-lg">Dashboard</a>
+                    <a className="link link-hover hover:bg-sky-400 py-2 px-1 rounded-lg">Register</a>
+                    <a className="link link-hover hover:bg-sky-400 py-2 px-1 rounded-lg">Login</a>
                 </nav>
                 <nav>
                     <div className="grid grid-flow-col gap-4">
